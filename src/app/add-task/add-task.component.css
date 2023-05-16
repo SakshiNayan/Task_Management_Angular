@@ -1,0 +1,15 @@
+.container{
+     border: 1px solid grey;
+    /* border-radius: 5px;
+    padding: 20px 10px 20px 10px; */
+    width: 500px;
+}
+form{
+    margin: 30px 20px 20px 20px;
+}
+
+/* @media only screen and(max-width : 600px) {
+    #form3Example1{
+        width: 100px;
+    }
+} */
