@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent {
-
+  constructor(){}
+  updateFormData(){}
+  deleteFormData(){}
 }

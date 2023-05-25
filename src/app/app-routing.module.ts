@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddTaskComponent } from './add-task/add-task.component';
-import { ViewTaskComponent } from './view-task/view-task.component';
-import { HeaderComponent } from './header/header.component';
+import { AddTaskComponent } from './component/add-task/add-task.component';
+import { ViewTaskComponent } from './component/view-task/view-task.component';
+import { HeaderComponent } from './component/header/header.component';
+import { EditTaskComponent } from './component/edit-task/edit-task.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Home', pathMatch: 'full'},
-  { path: 'Home', component:HeaderComponent },
-  {
-    path:'addUser', 
-    component: AddTaskComponent
-  },
-  {
-    path:'viewtask',
-    component: ViewTaskComponent
-  }
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  { path: 'register' , component: RegisterComponent },
+  { path: 'Home', component: HeaderComponent },
+  { path:'addTask', component: AddTaskComponent },
+  { path:'viewtask', component: ViewTaskComponent },
+  { path: 'editTask', component : EditTaskComponent }
 ];
 
 @NgModule({

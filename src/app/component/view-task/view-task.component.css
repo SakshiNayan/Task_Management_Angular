@@ -1,0 +1,9 @@
+/* #tbl-container{
+    max-width: 800px;
+
+} */
+#tbl-container{
+    position: absolute;
+    top: 8pc;
+    left:15pc;
+}

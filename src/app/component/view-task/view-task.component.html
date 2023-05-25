@@ -1,0 +1,64 @@
+<app-side-bar></app-side-bar>
+<div class="row" id="tbl-container">
+    <div class="col-lg-15">
+        <div class="card border-0 shadow">
+            <div class="card-body p-4">
+
+                <!-- Responsive table -->
+                <div class="table-responsive">
+                    <table class="table m-0 ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Serial No.</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Email Address</th>
+                                <th scope="col">Task Description</th>
+                                <th scope="col">Start time</th>
+                                <th scope="col">End time</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <!-- Call to action buttons -->
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <button 
+                                                class="btn btn-success btn-sm rounded-1" 
+                                                type="button" 
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                title="Edit"
+                                                (click)="updateFormData()"
+                                                ><i class="bi bi-pencil-square"></i></button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <button 
+                                                class="btn btn-danger btn-sm rounded-1" 
+                                                type="button" 
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                title="Delete"
+                                                (click)="deleteFormData()"><i class="bi bi-trash"></i></button>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
