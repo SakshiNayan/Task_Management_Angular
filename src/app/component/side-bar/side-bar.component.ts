@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
- // user : any;
-  constructor(){}
+  username: string = localStorage.getItem('username') as string;
+  constructor() { }
   ngOnInit(): void {
-  //   try{
-  //     this.user= JSON.parse(localStorage.getItem("username"));
-  //  }catch(error){}
+    console.log(this.username);
+
+    //   try{
+    //     this.user= JSON.parse(localStorage.getItem("username"));
+    //  }catch(error){}
   }
 }

@@ -5,12 +5,17 @@
      <a class="s-sidebar__trigger" href="/Home">
        
        <i class="bi bi-list" id="menu-bar"></i>
-       <!-- <div>{{user.username}}</div> -->
+       
        <div><h2 id="h2_complex">TASK MANAGEMENT</h2></div>
      </a>
      <!-- <button class="btn btn-primary" routerLink="/login">LOGOUT</button> -->
      <nav class="s-sidebar__nav">
         <ul>
+         <li>
+            <!-- <i class="bi bi-person-circle"></i> -->
+            <em><h3 style="color: white;margin-top: -15px;margin-left: 20px;">{{username}}</h3></em>
+         </li><br>
+         <hr>
            <li>
               <a class="s-sidebar__nav-link" href="/Home">
                <i class="bi bi-house-door-fill"></i><em>Home<span class="sr-only"></span></em>
@@ -31,7 +36,7 @@
                <i class="bi bi-geo-alt-fill"></i><em>Track Progess</em>
               </a>
            </li>
-           <li class="">
+           <li>
                <a class="s-sidebar__nav-link" href="/login">
                   <i class="bi bi-power"></i><em>LOGOUT</em>
                </a>
@@ -40,4 +45,3 @@
      </nav>
 
    </div>
-   
