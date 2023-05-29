@@ -20,14 +20,14 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr *ngFor="let data of formDataList">
+                                <th scope="row">{{data.id}}</th>
+                                <td>{{data.firstname}} {{data.lastname}}</td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.task_description}}</td>
+                                <td>{{data.start_time}}</td>
+                                <td>{{data.end_time}}</td>
+                                <td>{{data.status}}</td>
                                 <td>
                                     <!-- Call to action buttons -->
                                     <ul class="list-inline m-0">
@@ -38,7 +38,7 @@
                                                 data-toggle="tooltip" 
                                                 data-placement="top" 
                                                 title="Edit"
-                                                (click)="updateFormData()"
+                                            
                                                 ><i class="bi bi-pencil-square"></i></button>
                                         </li>
                                         <li class="list-inline-item">
@@ -48,7 +48,8 @@
                                                 data-toggle="tooltip" 
                                                 data-placement="top" 
                                                 title="Delete"
-                                                (click)="deleteFormData()"><i class="bi bi-trash"></i></button>
+                                                (click)="deleteFormData(data.id)"
+                                                ><i class="bi bi-trash"></i></button>
                                         </li>
                                     </ul>
                                 </td>
