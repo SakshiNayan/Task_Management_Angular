@@ -1,6 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
 import { FormDataService } from '../../service/form-data.service';
-import { FormControl, FormGroup } from '@angular/forms';
+//import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -19,7 +20,8 @@ export class AddTaskComponent  implements OnInit{
   //   status : new FormControl('')
   // }) 
   taskData : any ={};
-  constructor( private formDataService : FormDataService){}
+  constructor( private formDataService : FormDataService,
+    private router : Router){}
 
   ngOnInit(): void {
   }
@@ -29,6 +31,8 @@ export class AddTaskComponent  implements OnInit{
       () => {
         //this.resetForm();
         this.taskData={};
+        this.router.navigate(['/viewtask']);
+
       },
       (error) => {
         console.error('Error adding form data', error);

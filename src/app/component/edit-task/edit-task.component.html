@@ -1,1 +1,99 @@
-<p>edit-task works!</p>
+
+<div class="container shadow-xl p-3 mb-5 bg-white rounded">
+    <h3>EDIT TASK</h3>
+    <hr>
+    <form (ngSubmit)="updateFormData(editId)">  
+        <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="firstname">First name :</label>
+                <input 
+                  type="text" 
+                  id="firstname" 
+                  class="form-control"
+                  name="firstname"
+                  [(ngModel)]="updateTaskItem.firstname"/>
+                
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label 
+                  class="form-label" 
+                  for="lastname">Last name :</label>
+                <input 
+                  type="text" 
+                  id="lastname" 
+                  class="form-control"
+                  name="lastname"
+                  [(ngModel)]="updateTaskItem.lastname"/>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="email" for="form3Example3">Email address :</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control" 
+              name="email"
+              [(ngModel)]="updateTaskItem.email"/>
+          </div>
+          <!-- Message input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="task_description">Task Description :</label>
+                <textarea 
+                  class="form-control" 
+                  id="task_description" rows="4"
+                  name="task_description"
+                  [(ngModel)]="updateTaskItem.task_description"></textarea>
+            </div>
+            <!-- date/time -->
+            <div>
+                <label htmlFor="name">Start Time :</label>
+                <input type="datetime-local"  
+                    className='form-control'
+                    name="start_time"
+                    [(ngModel)]="updateTaskItem.start_time"/>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <label htmlFor="name">End Time :</label>
+                <input type="datetime-local"  
+                    className='form-control' 
+                    name="end_time"
+                    [(ngModel)]="updateTaskItem.end_time"/>
+            </div><br><br>
+
+            <div class="d-flex justify-content-center mb-4">
+                <label>Status :</label>&nbsp;&nbsp;&nbsp;
+                <div class="form-check form-check-inline">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="status" 
+                      id="inlineRadio1" 
+                      value="Complete"
+                      [(ngModel)]="updateTaskItem.status">
+                    <label class="form-check-label" for="inlineRadio1">Complete</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="status" 
+                      id="inlineRadio2" 
+                      value="InCompelete"
+                      [(ngModel)]="updateTaskItem.status">
+                    <label class="form-check-label" for="inlineRadio2">InCompelete</label>
+                  </div>
+            </div>
+        
+          <!-- Submit button -->
+          <button 
+            type="submit" 
+            class="btn btn-primary btn-block">Submit</button>
+            <!-- <input type="reset" value="Reset"> -->
+      </form>
+    
+</div>

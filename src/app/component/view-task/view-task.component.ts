@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
- //import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { FormDataService } from 'src/app/service/form-data.service';
+import { Router } from '@angular/router';
 
 interface FormData {
   id: number;
-  firstname : string;
-  lastname : string;
-  email : string;
-  task_description : string;
-  start_time :  number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  task_description: string;
+  start_time: number;
   end_time: number;
-  status : string
+  status: string
 }
 
 @Component({
@@ -19,20 +20,21 @@ interface FormData {
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
-  formDataList : FormData[]=[];
-  formData: FormData ={
-    id : 0,
-    firstname : '',
-    lastname : '',
-    email : '',
-    task_description : '',
-    start_time : 0 ,
+  formDataList: FormData[] = [];
+  formData: FormData = {
+    id: 0,
+    firstname: '',
+    lastname: '',
+    email: '',
+    task_description: '',
+    start_time: 0,
     end_time: 0,
-    status : ''
+    status: ''
   };
 
 
-  constructor(private formDataService: FormDataService) {}
+  constructor(private formDataService: FormDataService,
+    private router: Router) { }
 
   ngOnInit() {
     this.fetchFormData();
@@ -40,26 +42,18 @@ export class ViewTaskComponent implements OnInit {
 
   fetchFormData() {
     this.formDataService.getFormData().subscribe(
-      (data : any) => {
+      (data: any) => {
         this.formDataList = data;
       },
-      (error : any) => {
+      (error: any) => {
         console.error('Error fetching form data', error);
       }
     );
   }
 
-  // addFormData() {
-  //   this.formDataService.addFormData(this.formData).subscribe(
-  //     () => {
-  //       //this.resetForm();
-  //       this.fetchFormData();
-  //     },
-  //     (error : any) => {
-  //       console.error('Error adding form data', error);
-  //     }
-  //   );
-  // }
+  updateTask(id: number) {
+    this.router.navigate(['/editTask', id]);
+  }
 
   // updateFormData(id: number) {
   //   this.formDataService.updateFormData(id, this.formData).subscribe(
@@ -78,7 +72,7 @@ export class ViewTaskComponent implements OnInit {
       () => {
         this.fetchFormData();
       },
-      (error : any) => {
+      (error: any) => {
         console.error('Error deleting form data', error);
       }
     );

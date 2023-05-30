@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// interface FormData {
-//   firstname : string;
-//   lastname : string;
-//   email : string;
-//   task_description : string;
-//   start_time :  number;
-//   end_time: number;
-//   status : string
-// }
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +27,8 @@ export class FormDataService {
   deleteFormData(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  getByIDFormData(id : number, formData : any): Observable<any>{
+    return this.http.get(`${this.apiUrl}/${id}`, formData)
+  } 
 }

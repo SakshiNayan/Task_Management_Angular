@@ -9,7 +9,7 @@
                     <table class="table m-0 ">
                         <thead>
                             <tr>
-                                <th scope="col">Serial No.</th>
+                                <th scope="col">Id No.</th>
                                 <th scope="col">User Name</th>
                                 <th scope="col">Email Address</th>
                                 <th scope="col">Task Description</th>
@@ -38,7 +38,7 @@
                                                 data-toggle="tooltip" 
                                                 data-placement="top" 
                                                 title="Edit"
-                                            
+                                                (click)="updateTask(data.id)"
                                                 ><i class="bi bi-pencil-square"></i></button>
                                         </li>
                                         <li class="list-inline-item">
