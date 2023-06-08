@@ -16,7 +16,7 @@
                                 <th scope="col">Start time</th>
                                 <th scope="col">End time</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" *ngIf="loginDetails?.user?.role == 1">Action</th>
                                 </tr>
                         </thead>
                         <tbody>
@@ -28,7 +28,7 @@
                                 <td>{{data.start_time}}</td>
                                 <td>{{data.end_time}}</td>
                                 <td>{{data.status}}</td>
-                                <td>
+                                <td  *ngIf="loginDetails?.user?.role == 1">
                                     <!-- Call to action buttons -->
                                     <ul class="list-inline m-0">
                                         <li class="list-inline-item">

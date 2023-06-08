@@ -1,47 +1,50 @@
-
 <div class="s-layout">
    <!-- Sidebar -->
    <div class="s-layout__sidebar">
-     <a class="s-sidebar__trigger" href="/Home">
-       
-       <i class="bi bi-list" id="menu-bar"></i>
-       
-       <div><h2 id="h2_complex">TASK MANAGEMENT</h2></div>
-     </a>
-     <!-- <button class="btn btn-primary" routerLink="/login">LOGOUT</button> -->
-     <nav class="s-sidebar__nav">
-        <ul>
-         <li>
-            <!-- <i class="bi bi-person-circle"></i> -->
-            <em><h3 style="color: white;margin-left: 20px;">{{username}}</h3></em>
-         </li><br>
-         <hr>
-           <li>
-              <a class="s-sidebar__nav-link" href="/Home">
-               <i class="bi bi-house-door-fill"></i><em>HOME<span class="sr-only"></span></em>
-              </a>
-           </li>
-           <li>
-             <a class="s-sidebar__nav-link" href="/addTask">
-               <i class="bi bi-plus-circle"></i><em>ADD NEW TASK</em>
-             </a>
-          </li>
-           <li>
-              <a class="s-sidebar__nav-link" href="/viewtask">
-               <i class="bi bi-journal-check"></i><em>VIEW DETAILS</em>
-              </a>
-           </li>
-           <li>
-              <a class="s-sidebar__nav-link">
-               <i class="bi bi-geo-alt-fill"></i><em>TRACK PROGRESS</em>
-              </a>
-           </li>
-           <li>
-               <a class="s-sidebar__nav-link" href="/login">
+      <a class="s-sidebar__trigger" href="javascript:void(0)">
+
+         <i class="bi bi-list" id="menu-bar"></i>
+
+         <div>
+            <h2 id="h2_complex">TASK MANAGEMENT</h2>
+         </div>
+      </a>
+      <!-- <button class="btn btn-primary" routerLink="/login">LOGOUT</button> -->
+      <nav class="s-sidebar__nav">
+         <ul>
+            <li>
+               <!-- <i class="bi bi-person-circle"></i> -->
+               <em>
+                  <h3 style="color: white;margin-left: 20px;">{{username}}</h3>
+               </em>
+            </li><br>
+            <hr>
+            <li>
+               <a class="s-sidebar__nav-link" href="/Home">
+                  <i class="bi bi-house-door-fill"></i><em>HOME<span class="sr-only"></span></em>
+               </a>
+            </li>
+            <li *ngIf="loginDetails?.user?.role == 1">
+               <a class="s-sidebar__nav-link" href="/addTask">
+                  <i class="bi bi-plus-circle"></i><em>ADD NEW TASK</em>
+               </a>
+            </li>
+            <li>
+               <a class="s-sidebar__nav-link" href="/viewtask">
+                  <i class="bi bi-journal-check"></i><em>VIEW DETAILS</em>
+               </a>
+            </li>
+            <li>
+               <a class="s-sidebar__nav-link">
+                  <i class="bi bi-geo-alt-fill"></i><em>TRACK PROGRESS</em>
+               </a>
+            </li>
+            <li>
+               <a class="s-sidebar__nav-link" href="javascript:void(0)" (click)="logut()">
                   <i class="bi bi-power"></i><em>LOGOUT</em>
                </a>
             </li>
-        </ul>
-     </nav>
+         </ul>
+      </nav>
 
    </div>

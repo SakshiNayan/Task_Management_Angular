@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import { FormDataService } from 'src/app/service/form-data.service';
 import { Router } from '@angular/router';
+import { loginDetailInterface } from 'src/app/service/login.interface';
 
 interface FormData {
   id: number;
@@ -31,10 +32,18 @@ export class ViewTaskComponent implements OnInit {
     end_time: 0,
     status: ''
   };
+  loginDetails: loginDetailInterface | undefined;
 
-
-  constructor(private formDataService: FormDataService,
-    private router: Router) { }
+  constructor(
+    private formDataService: FormDataService,
+    private router: Router,
+  ) {
+    this.formDataService.loginDetails.subscribe(
+      value => {
+        this.loginDetails = value;
+      }
+    )
+  }
 
   ngOnInit() {
     this.fetchFormData();
@@ -55,21 +64,12 @@ export class ViewTaskComponent implements OnInit {
     this.router.navigate(['/editTask', id]);
   }
 
-  // updateFormData(id: number) {
-  //   this.formDataService.updateFormData(id, this.formData).subscribe(
-  //     () => {
-  //       //this.resetForm();
-  //       this.fetchFormData();
-  //     },
-  //     (error : any) => {
-  //       console.error('Error updating form data', error);
-  //     }
-  //   );
-  // }
+
 
   deleteFormData(id: number) {
     this.formDataService.deleteFormData(id).subscribe(
       () => {
+        alert('TaskData Deleted Successfully!')
         this.fetchFormData();
       },
       (error: any) => {

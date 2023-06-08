@@ -9,13 +9,13 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'register' , component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'Home', component: HeaderComponent },
-  { path:'addTask', component: AddTaskComponent },
-  { path:'viewtask', component: ViewTaskComponent },
-  { path: 'editTask/:id', component : EditTaskComponent }
+  { path: 'addTask', component: AddTaskComponent },
+  { path: 'viewtask', component: ViewTaskComponent },
+  { path: 'editTask/:id', component: EditTaskComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

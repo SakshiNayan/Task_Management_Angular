@@ -1,6 +1,6 @@
 import { Component ,OnInit } from '@angular/core';
 import { FormDataService } from '../../service/form-data.service';
-//import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,16 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent  implements OnInit{
-  // formDataList: FormData[] = [];
-  // taskData = new FormGroup({
-  //   firstname : new FormControl(''),
-  //   lastname : new FormControl(''),
-  //   email : new FormControl(''),
-  //   task_description : new FormControl(''),
-  //   start_time : new FormControl(''),
-  //   end_time : new FormControl(''),
-  //   status : new FormControl('')
-  // }) 
+
   taskData : any ={};
   constructor( private formDataService : FormDataService,
     private router : Router){}
@@ -31,6 +22,7 @@ export class AddTaskComponent  implements OnInit{
       () => {
         //this.resetForm();
         this.taskData={};
+        alert('Task Added Successfully!')
         this.router.navigate(['/viewtask']);
 
       },

@@ -30,7 +30,7 @@ export class EditTaskComponent implements OnInit {
         () => {
           //this.resetForm();
           this.updateTaskItem ={}
-          alert('task updated Successfully')
+          alert('Task updated Successfully!')
           this.router.navigate(['/viewtask'])
         },
         (error : any) => {
