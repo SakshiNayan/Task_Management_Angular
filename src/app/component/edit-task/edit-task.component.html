@@ -2,70 +2,61 @@
 <div class="container shadow-xl p-3 mb-5 bg-white rounded">
     <h3>EDIT TASK</h3>
     <hr>
-    <form (ngSubmit)="updateFormData(editId)">  
-        <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="firstname">First name :</label>
-                <input 
-                  type="text" 
-                  id="firstname" 
-                  class="form-control"
-                  name="firstname"
-                  [(ngModel)]="updateTaskItem.firstname"/>
-                
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label 
-                  class="form-label" 
-                  for="lastname">Last name :</label>
-                <input 
-                  type="text" 
-                  id="lastname" 
-                  class="form-control"
-                  name="lastname"
-                  [(ngModel)]="updateTaskItem.lastname"/>
-              </div>
-            </div>
-          </div>
+    <form  [formGroup]="updateTaskItem" (ngSubmit)="updateFormData(editId)">  
         
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <label class="email" for="form3Example3">Email address :</label>
-            <input 
-              type="email" 
-              id="email" 
-              class="form-control" 
-              name="email"
-              [(ngModel)]="updateTaskItem.email"/>
-          </div>
-          <!-- Message input -->
-            <div class="form-outline mb-4">
+            <!-- <div class="form-outline mb-4">
                 <label class="form-label" for="task_description">Task Description :</label>
                 <textarea 
                   class="form-control" 
                   id="task_description" rows="4"
                   name="task_description"
                   [(ngModel)]="updateTaskItem.task_description"></textarea>
+            </div><br>
+    
+            <div class="form-outline mb-4">
+              <label htmlFor="name">Start Date :</label>
+              <input type="date"  
+                  [min]="minDate"
+                  class='form-control'
+                  name="start_time"
+                  [(ngModel)]="updateTaskItem.start_time" (change)="endMinDate = updateTaskItem.start_time;"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="form-outline mb-4">
+              <label htmlFor="name">End Date :</label>
+              <input type="date"  
+                  [min]="endMinDate"
+                  class='form-control' 
+                  name="end_time"
+                  [(ngModel)]="updateTaskItem.end_time"/>
+            </div><br><br> -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="task_description">Task Description :</label>
+              <textarea class="form-control" id="task_description" rows="4" formControlName="task_description" 
+                [ngClass]="{ 'is-invalid': submitted && form.task_description.errors }"></textarea>
+              <div *ngIf="submitted && form.task_description.errors" class="invalid-feedback">
+                <div *ngIf="form.task_description.errors.required">Description is required</div>
+              </div>
             </div>
             <!-- date/time -->
-            <div>
-                <label htmlFor="name">Start Time :</label>
-                <input type="datetime-local"  
-                    className='form-control'
-                    name="start_time"
-                    [(ngModel)]="updateTaskItem.start_time"/>&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <label htmlFor="name">End Time :</label>
-                <input type="datetime-local"  
-                    className='form-control' 
-                    name="end_time"
-                    [(ngModel)]="updateTaskItem.end_time"/>
+            <div class="form-outline mb-4">
+              <label htmlFor="name">Start Date :</label>
+              <input type="date" class="form-control" [min]="minDate" formControlName="start_time"
+                [ngClass]="{ 'is-invalid': submitted && form.start_time.errors }" (change)="endMinDate = form.start_time.value"/>
+              <div *ngIf="submitted && form.start_time.errors" class="invalid-feedback">
+                <div *ngIf="form.start_time.errors.required">Start Date is required</div>
+                <div *ngIf="form.start_time.errors.pattern">Start Date is enter valid format</div>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+              <label htmlFor="name">End Date :</label>
+              <input type="date" [min]="endMinDate" class="form-control" formControlName="end_time"
+                [ngClass]="{ 'is-invalid': submitted && form.end_time.errors }" />
+              <div *ngIf="submitted && form.end_time.errors" class="invalid-feedback">
+                <div *ngIf="form.end_time.errors.required">End Date is required</div>
+              </div>
             </div><br><br>
 
-            <div class="d-flex justify-content-center mb-4">
+            <!-- <div class="d-flex justify-content-center mb-4">
                 <label>Status :</label>&nbsp;&nbsp;&nbsp;
                 <div class="form-check form-check-inline">
                     <input 
@@ -87,7 +78,7 @@
                       [(ngModel)]="updateTaskItem.status">
                     <label class="form-check-label" for="inlineRadio2">InCompelete</label>
                   </div>
-            </div>
+            </div> -->
         
           <!-- Submit button -->
           <button 

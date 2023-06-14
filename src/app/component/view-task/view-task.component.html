@@ -11,27 +11,39 @@
                             <tr>
                                 <th scope="col">Id No.</th>
                                 <th scope="col">User Name</th>
-                                <th scope="col">Email Address</th>
                                 <th scope="col">Task Description</th>
-                                <th scope="col">Start time</th>
-                                <th scope="col">End time</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
                                 <th scope="col">Status</th>
-                                <th scope="col" *ngIf="loginDetails?.user?.role == 1">Action</th>
+                                <th scope="col">Action</th>
                                 </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of formDataList">
                                 <th scope="row">{{data.id}}</th>
-                                <td>{{data.firstname}} {{data.lastname}}</td>
-                                <td>{{data.email}}</td>
+                                <td>{{data.username}}</td>
                                 <td>{{data.task_description}}</td>
-                                <td>{{data.start_time}}</td>
-                                <td>{{data.end_time}}</td>
-                                <td>{{data.status}}</td>
-                                <td  *ngIf="loginDetails?.user?.role == 1">
+                                <td>{{data.start_time | date :'dd/MM/YYYY'}}</td>
+                                <td>{{data.end_time | date :'dd/MM/YYYY'}}</td>
+                                <td style="text-align: right;" 
+                                    [ngClass]="{
+                                        'pending': data.status === 'pending',
+                                        'inprogress': data.status === 'inprogress',
+                                        'complete': data.status === 'complete'}">{{data.status}}</td>
+                                <td>
                                     <!-- Call to action buttons -->
                                     <ul class="list-inline m-0">
-                                        <li class="list-inline-item">
+                                        <li class="list-inline-item" *ngIf="loginDetails?.user?.role == 2">
+                                            <button 
+                                                class="btn btn-success btn-sm rounded-1" 
+                                                type="button" 
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                title="Track"
+                                                (click)="trackTask(data.id)"
+                                                ><i class="bi bi-eye"></i></button>
+                                        </li>
+                                        <li class="list-inline-item" *ngIf="loginDetails?.user?.role == 1">
                                             <button 
                                                 class="btn btn-success btn-sm rounded-1" 
                                                 type="button" 
@@ -41,7 +53,7 @@
                                                 (click)="updateTask(data.id)"
                                                 ><i class="bi bi-pencil-square"></i></button>
                                         </li>
-                                        <li class="list-inline-item">
+                                        <li class="list-inline-item" *ngIf="loginDetails?.user?.role == 1">
                                             <button 
                                                 class="btn btn-danger btn-sm rounded-1" 
                                                 type="button" 

@@ -7,3 +7,14 @@
     top: 8pc;
     left:15pc;
 }
+.pending {
+    color: red;
+  }
+  
+  .inprogress {
+    color: blue;
+  }
+  
+  .complete {
+    color: green;
+  }

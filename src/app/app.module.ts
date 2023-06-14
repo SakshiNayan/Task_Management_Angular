@@ -12,6 +12,7 @@ import { ViewTaskComponent } from './component/view-task/view-task.component';
 import { EditTaskComponent } from './component/edit-task/edit-task.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import { TrackProgessComponent } from './component/track-progess/track-progess.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './component/register/register.component';
     ViewTaskComponent,
     EditTaskComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TrackProgessComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+.container{
+    /* border: 1px solid grey; */
+   /* border-radius: 5px;
+   padding: 20px 10px 20px 10px; */
+   width: 700px;
+   position: absolute;
+   top:80px;
+   left: 15pc;
+}
+.pending {
+    color: red;
+  }
+  
+  .inprogress {
+    color: blue;
+  }
+  
+  .complete {
+    color: green;
+  }

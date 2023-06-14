@@ -4,16 +4,16 @@ import { FormDataService } from 'src/app/service/form-data.service';
 import { Router } from '@angular/router';
 import { loginDetailInterface } from 'src/app/service/login.interface';
 
-interface FormData {
-  id: number;
-  firstname: string;
-  lastname: string;
-  email: string;
-  task_description: string;
-  start_time: number;
-  end_time: number;
-  status: string
-}
+// interface FormData {
+//   id: number;
+//   firstname: string;
+//   lastname: string;
+//   email: string;
+//   task_description: string;
+//   start_time: number;
+//   end_time: number;
+//   status: string
+// }
 
 @Component({
   selector: 'app-view-task',
@@ -21,19 +21,12 @@ interface FormData {
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
-  formDataList: FormData[] = [];
-  formData: FormData = {
-    id: 0,
-    firstname: '',
-    lastname: '',
-    email: '',
-    task_description: '',
-    start_time: 0,
-    end_time: 0,
-    status: ''
-  };
+  // statusItem : any[]=[];
+  // status : string;
+  formDataList: any[] = [];
   loginDetails: loginDetailInterface | undefined;
-
+  user_id: any;
+  role: number = 1;
   constructor(
     private formDataService: FormDataService,
     private router: Router,
@@ -46,12 +39,17 @@ export class ViewTaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchFormData();
+    if (this.loginDetails?.user.id) {
+      this.user_id = this.loginDetails?.user.id;
+      this.role = this.loginDetails?.user.role;
+      this.fetchFormData(this.loginDetails?.user.id, this.role);
+    }
   }
 
-  fetchFormData() {
-    this.formDataService.getFormData().subscribe(
+  fetchFormData(user_id: any, role: number) {
+    this.formDataService.getFormData(user_id, role).subscribe(
       (data: any) => {
+        console.log(data)
         this.formDataList = data;
       },
       (error: any) => {
@@ -70,7 +68,7 @@ export class ViewTaskComponent implements OnInit {
     this.formDataService.deleteFormData(id).subscribe(
       () => {
         alert('TaskData Deleted Successfully!')
-        this.fetchFormData();
+        this.fetchFormData(this.user_id, this.role);
       },
       (error: any) => {
         console.error('Error deleting form data', error);
@@ -78,5 +76,31 @@ export class ViewTaskComponent implements OnInit {
     );
   }
 
+  trackTask(task_id: any) {
+    this.router.navigate(['/track-progess', task_id]);
+  }
+
+  // fetchStatustrack(status: any){
+  //   this.formDataService.getStatustrack(status).subscribe(
+  //     (data)=>{
+  //       console.log(data);
+  //       this.statusItem=data;
+  //     }
+  //   )
+  // }
+
+  // getStatusColor(): string {
+  //   switch (this.status) {
+  //     case 'pending':
+  //       return 'red';
+  //     case 'inprogress':
+  //       return 'blue';
+  //     case 'complete':
+  //       return 'green';
+  //     default:
+  //       return '';
+  //   }
+  // }
+  
 }
 
